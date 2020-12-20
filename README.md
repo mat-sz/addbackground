@@ -21,3 +21,29 @@ npm install renderbg
 # or:
 yarn install renderbg
 ```
+
+## Example usage
+
+```ts
+import { addBackground } from 'renderbg';
+
+const canvas = document.getElementById('backgroundCanvas');
+addBackground({ canvas, type: 'bubbles' });
+```
+
+## API
+
+### addBackground
+
+addBackground is the main function that adds a background to the selected canvas and keeps rendering it. Currently there is no way to stop or pause the rendering.
+
+It accepts one argument of type BackgroundOptions.
+
+### BackgroundOptions
+
+BackgroundOptions has the following properties:
+
+| Property | Default value | Description                                                               |
+| -------- | ------------- | ------------------------------------------------------------------------- |
+| canvas   | `undefined`   | Canvas element to render to. **(required)**                               |
+| type     | `undefined`   | Background type, currently: either 'ripples' or 'bubbles'. **(required)** |

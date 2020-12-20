@@ -1,4 +1,5 @@
 import { bubbles } from './bubbles';
+import { ripples } from './ripples';
 
 export interface RenderOptions {
   canvas: HTMLCanvasElement;
@@ -8,5 +9,6 @@ export interface RenderOptions {
 export type RenderFunctionFactory = (options: RenderOptions) => () => void;
 
 export const backgrounds = {
-  bubbles: bubbles,
+  bubbles,
+  ripples,
 };

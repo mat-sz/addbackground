@@ -1,5 +1,5 @@
 {
-  "name": "renderbg",
+  "name": "addbackground",
   "version": "0.0.1",
   "description": "Beautiful canvas backgrounds made easy.",
   "main": "lib/index.js",
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mat-sz/renderbg.git"
+    "url": "https://github.com/mat-sz/addbackground.git"
   },
   "bugs": {
-    "url": "https://github.com/mat-sz/renderbg/issues"
+    "url": "https://github.com/mat-sz/addbackground/issues"
   },
   "husky": {
     "hooks": {
@@ -35,7 +35,7 @@
       "prettier --write"
     ]
   },
-  "homepage": "https://github.com/mat-sz/renderbg",
+  "homepage": "https://github.com/mat-sz/addbackground",
   "author": "Mat Sz <contact@matsz.dev>",
   "license": "BSD-3-Clause-Clear",
   "private": false,

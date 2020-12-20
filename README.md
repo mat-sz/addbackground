@@ -1,31 +1,31 @@
-<h1 align="center">renderbg</h1>
+<h1 align="center">addbackground</h1>
 
 <p align="center">
 Beautiful canvas backgrounds made easy.
 </p>
 
 <p align="center">
-<a href="https://npmjs.com/package/renderbg">
-<img alt="npm" src="https://img.shields.io/npm/v/renderbg">
-<img alt="npm" src="https://img.shields.io/npm/dw/renderbg">
-<img alt="NPM" src="https://img.shields.io/npm/l/renderbg">
+<a href="https://npmjs.com/package/addbackground">
+<img alt="npm" src="https://img.shields.io/npm/v/addbackground">
+<img alt="npm" src="https://img.shields.io/npm/dw/addbackground">
+<img alt="NPM" src="https://img.shields.io/npm/l/addbackground">
 </a>
 </p>
 
 ## Installation
 
-TypeSocket is available on [npm](https://www.npmjs.com/package/renderbg), you can install it with either npm or yarn:
+TypeSocket is available on [npm](https://www.npmjs.com/package/addbackground), you can install it with either npm or yarn:
 
 ```sh
-npm install renderbg
+npm install addbackground
 # or:
-yarn install renderbg
+yarn install addbackground
 ```
 
 ## Example usage
 
 ```ts
-import { addBackground } from 'renderbg';
+import { addBackground } from 'addbackground';
 
 const canvas = document.getElementById('backgroundCanvas');
 addBackground({ canvas, type: 'bubbles' });

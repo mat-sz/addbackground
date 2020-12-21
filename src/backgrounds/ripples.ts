@@ -3,6 +3,7 @@ import { RenderFunctionFactory, RenderOptions } from '.';
 export const ripples: RenderFunctionFactory = ({
   canvas,
   ctx,
+  primaryColor,
 }: RenderOptions) => {
   let particles: {
     x: number;
@@ -34,11 +35,13 @@ export const ripples: RenderFunctionFactory = ({
         continue;
       }
 
-      ctx.fillStyle =
-        'rgba(255, 255, 255, ' + 0.05 * (1 - particle.r / particle.maxr) + ')';
+      ctx.globalAlpha = 1 - particle.r / particle.maxr;
+      ctx.fillStyle = primaryColor;
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.r, 0, 2 * Math.PI, false);
       ctx.fill();
     }
+
+    ctx.globalAlpha = 1;
   };
 };

@@ -3,9 +3,18 @@ import { backgrounds } from './backgrounds';
 export interface BackgroundOptions {
   canvas: HTMLCanvasElement;
   type: keyof typeof backgrounds;
+  primaryColor?: string;
+  secondaryColor?: string;
+  backgroundColor?: string;
 }
 
-export function addBackground({ canvas, type }: BackgroundOptions): void {
+export function addBackground({
+  canvas,
+  type,
+  primaryColor = 'rgba(255, 255, 255, 0.05)',
+  secondaryColor = 'rgba(0, 0, 0, 0.05)',
+  backgroundColor = 'transparent',
+}: BackgroundOptions): void {
   if (!(type in backgrounds)) {
     throw new Error('Unsupported background type.');
   }
@@ -18,6 +27,9 @@ export function addBackground({ canvas, type }: BackgroundOptions): void {
   const renderFunction = backgrounds[type]({
     canvas,
     ctx,
+    primaryColor,
+    secondaryColor,
+    backgroundColor,
   });
 
   const frame = () => {

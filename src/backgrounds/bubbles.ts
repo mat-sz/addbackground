@@ -3,6 +3,7 @@ import { RenderFunctionFactory, RenderOptions } from '.';
 export const bubbles: RenderFunctionFactory = ({
   canvas,
   ctx,
+  primaryColor,
 }: RenderOptions) => {
   const particlesMax = 150;
   const particlesChance = 0.1;
@@ -20,7 +21,7 @@ export const bubbles: RenderFunctionFactory = ({
     t++;
     if (t > 360) t = 0;
 
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.fillStyle = primaryColor;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (particles.length < particlesMax && Math.random() < particlesChance) {

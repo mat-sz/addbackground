@@ -33,6 +33,13 @@ export function addBackground({
   });
 
   const frame = () => {
+    if (backgroundColor === 'transparent') {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    } else {
+      ctx.fillStyle = backgroundColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
     renderFunction();
     requestAnimationFrame(frame);
   };

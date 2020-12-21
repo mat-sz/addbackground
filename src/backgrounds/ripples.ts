@@ -14,7 +14,7 @@ export const ripples: RenderFunctionFactory = ({
   }[] = [];
 
   return () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = primaryColor;
 
     if (particles.length < 30 && Math.random() < 0.05) {
       // Math.random all the things.
@@ -36,7 +36,6 @@ export const ripples: RenderFunctionFactory = ({
       }
 
       ctx.globalAlpha = 1 - particle.r / particle.maxr;
-      ctx.fillStyle = primaryColor;
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.r, 0, 2 * Math.PI, false);
       ctx.fill();

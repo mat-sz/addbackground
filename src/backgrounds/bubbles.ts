@@ -22,7 +22,6 @@ export const bubbles: RenderFunctionFactory = ({
     if (t > 360) t = 0;
 
     ctx.fillStyle = primaryColor;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (particles.length < particlesMax && Math.random() < particlesChance) {
       particles.push({

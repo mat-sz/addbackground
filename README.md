@@ -35,13 +35,13 @@ addBackground({ canvas, type: 'bubbles' });
 
 ### addBackground
 
-addBackground is the main function that adds a background to the selected canvas and keeps rendering it. Currently there is no way to stop or pause the rendering.
+addBackground is the main function that adds a background to the selected canvas and keeps rendering it.
 
-It accepts one argument of type BackgroundOptions.
+It accepts one argument of type `BackgroundOptions` and returns an instance of `BackgroundControls`.
 
 ### BackgroundOptions
 
-BackgroundOptions has the following properties:
+BackgroundOptions is an object that has the following properties:
 
 | Property        | Default value               | Description                                                                                                     |
 | --------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -50,3 +50,17 @@ BackgroundOptions has the following properties:
 | primaryColor    | `rgba(255, 255, 255, 0.05)` | Primary color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).    |
 | secondaryColor  | `rgba(0, 0, 0, 0.05)`       | Secondary color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).  |
 | backgroundColor | `transparent`               | Background color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). |
+
+### BackgroundControls
+
+#### isPlaying: boolean
+
+Returns the playback state of the animation.
+
+#### setIsPlaying: (value: boolean) => void
+
+Sets the playback state of the animation.
+
+#### stop: () => void
+
+Disassembles the animation, clears the canvas. Further playback is impossible after this function is called.

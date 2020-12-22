@@ -43,13 +43,13 @@ It accepts one argument of type `BackgroundOptions` and returns an instance of `
 
 BackgroundOptions is an object that has the following properties:
 
-| Property        | Default value               | Description                                                                                                     |
-| --------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| canvas          | `undefined`                 | Canvas element to render to. **(required)**                                                                     |
-| type            | `undefined`                 | Background type, currently: either 'ripples' or 'bubbles'. **(required)**                                       |
-| primaryColor    | `rgba(255, 255, 255, 0.05)` | Primary color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).    |
-| secondaryColor  | `rgba(0, 0, 0, 0.05)`       | Secondary color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).  |
-| backgroundColor | `transparent`               | Background color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). |
+| Property        | Default value              | Description                                                                                                     |
+| --------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| canvas          | `undefined`                | Canvas element to render to. **(required)**                                                                     |
+| type            | `undefined`                | Background type, currently: either 'ripples' or 'bubbles'. **(required)**                                       |
+| primaryColor    | `rgba(255, 255, 255, 0.2)` | Primary color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).    |
+| secondaryColor  | `rgba(0, 0, 0, 0.2)`       | Secondary color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).  |
+| backgroundColor | `transparent`              | Background color, accepts a [CSS <color> value.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). |
 
 ### BackgroundControls
 

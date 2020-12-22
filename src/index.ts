@@ -17,8 +17,8 @@ export interface BackgroundControls {
 export function addBackground({
   canvas,
   type,
-  primaryColor = 'rgba(255, 255, 255, 0.05)',
-  secondaryColor = 'rgba(0, 0, 0, 0.05)',
+  primaryColor = 'rgba(255, 255, 255, 0.2)',
+  secondaryColor = 'rgba(0, 0, 0, 0.2)',
   backgroundColor = 'transparent',
 }: BackgroundOptions): BackgroundControls {
   if (!(type in backgrounds)) {

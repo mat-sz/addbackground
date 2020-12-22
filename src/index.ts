@@ -30,6 +30,9 @@ export function addBackground({
     throw new Error('Unable to create Context2D.');
   }
 
+  const defaultFillStyle = ctx.fillStyle;
+  const defaultStrokeStyle = ctx.strokeStyle;
+
   const renderFunction = backgrounds[type]({
     canvas,
     ctx,
@@ -43,7 +46,8 @@ export function addBackground({
 
   const frame = () => {
     if (stopped) {
-      ctx.fillStyle = 'transparent';
+      ctx.fillStyle = defaultFillStyle;
+      ctx.strokeStyle = defaultStrokeStyle;
       ctx.globalAlpha = 1;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       return;

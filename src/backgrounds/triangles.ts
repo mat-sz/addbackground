@@ -9,15 +9,8 @@ export const triangles: RenderFunctionFactory = ({
   const particlesChance = 0.1;
   const particleRadius = 2;
   const connectionDistance = 100;
-  let mouseX = 0;
-  let mouseY = 0;
   let particles: { x: number; y: number; speed: number }[] = [];
   let t = 0;
-
-  canvas.addEventListener('mousemove', e => {
-    mouseX = e.offsetX;
-    mouseY = e.offsetY;
-  });
 
   for (let i = 0; i < particlesMax; i++) {
     particles.push({
@@ -27,7 +20,7 @@ export const triangles: RenderFunctionFactory = ({
     });
   }
 
-  return () => {
+  return ({ mouseX, mouseY }) => {
     t++;
     if (t > 360) t = 0;
 
@@ -48,17 +41,19 @@ export const triangles: RenderFunctionFactory = ({
 
       particle.y -= particle.speed;
 
-      // Detect if the pointer is nearby and react to it.
-      const distance = Math.sqrt(
-        Math.pow(mouseX - particle.x, 2) + Math.pow(mouseY - particle.y, 2)
-      );
-      if (distance < connectionDistance + particleRadius) {
-        const factor = 1 - distance / (connectionDistance + particleRadius);
-        if (particle.x > mouseX) particle.x += factor;
-        else particle.x -= factor;
+      if (mouseX && mouseY) {
+        // Detect if the pointer is nearby and react to it.
+        const distance = Math.sqrt(
+          Math.pow(mouseX - particle.x, 2) + Math.pow(mouseY - particle.y, 2)
+        );
+        if (distance < connectionDistance + particleRadius) {
+          const factor = 1 - distance / (connectionDistance + particleRadius);
+          if (particle.x > mouseX) particle.x += factor;
+          else particle.x -= factor;
 
-        if (particle.y > mouseY) particle.y += factor;
-        else particle.y -= factor;
+          if (particle.y > mouseY) particle.y += factor;
+          else particle.y -= factor;
+        }
       }
 
       // Remove "dead" particles.

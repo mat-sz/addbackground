@@ -10,7 +10,14 @@ export interface RenderOptions {
   backgroundColor: string;
 }
 
-export type RenderFunctionFactory = (options: RenderOptions) => () => void;
+export interface RenderArguments {
+  mouseX: number | undefined;
+  mouseY: number | undefined;
+}
+
+export type RenderFunctionFactory = (
+  options: RenderOptions
+) => (args: RenderArguments) => void;
 
 export const backgrounds = {
   bubbles,

@@ -44,6 +44,22 @@ export function addBackground({
   let playing = true;
   let stopped = false;
 
+  let mouseX: number | undefined = undefined;
+  let mouseY: number | undefined = undefined;
+
+  const handleMouseMove = (e: MouseEvent) => {
+    mouseX = e.offsetX;
+    mouseY = e.offsetY;
+  };
+
+  const handleMouseLeave = () => {
+    mouseX = undefined;
+    mouseY = undefined;
+  };
+
+  canvas.addEventListener('mousemove', handleMouseMove);
+  canvas.addEventListener('mouseleave', handleMouseLeave);
+
   const frame = () => {
     if (stopped) {
       ctx.fillStyle = defaultFillStyle;
@@ -61,7 +77,7 @@ export function addBackground({
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
-      renderFunction();
+      renderFunction({ mouseX, mouseY });
     }
 
     requestAnimationFrame(frame);
@@ -83,6 +99,8 @@ export function addBackground({
     stop: () => {
       playing = false;
       stopped = true;
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
     },
   };
 }

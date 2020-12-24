@@ -7,17 +7,10 @@ export const bubbles: RenderFunctionFactory = ({
 }: RenderOptions) => {
   const particlesMax = 150;
   const particlesChance = 0.1;
-  let mouseX = 0;
-  let mouseY = 0;
   let particles: { x: number; y: number; r: number; speed: number }[] = [];
   let t = 0;
 
-  canvas.addEventListener('mousemove', e => {
-    mouseX = e.offsetX;
-    mouseY = e.offsetY;
-  });
-
-  return () => {
+  return ({ mouseX, mouseY }) => {
     t++;
     if (t > 360) t = 0;
 
@@ -35,17 +28,19 @@ export const bubbles: RenderFunctionFactory = ({
     for (const particle of particles) {
       particle.y -= particle.speed + Math.sin((t * Math.PI) / 180);
 
-      // Detect if the pointer is nearby and react to it.
-      const distance = Math.sqrt(
-        Math.pow(mouseX - particle.x, 2) + Math.pow(mouseY - particle.y, 2)
-      );
-      if (distance < 50 + particle.r) {
-        const factor = 1 - distance / (50 + particle.r);
-        if (particle.x > mouseX) particle.x += factor;
-        else particle.x -= factor;
+      if (mouseX && mouseY) {
+        // Detect if the pointer is nearby and react to it.
+        const distance = Math.sqrt(
+          Math.pow(mouseX - particle.x, 2) + Math.pow(mouseY - particle.y, 2)
+        );
+        if (distance < 50 + particle.r) {
+          const factor = 1 - distance / (50 + particle.r);
+          if (particle.x > mouseX) particle.x += factor;
+          else particle.x -= factor;
 
-        if (particle.y > mouseY) particle.y += factor;
-        else particle.y -= factor;
+          if (particle.y > mouseY) particle.y += factor;
+          else particle.y -= factor;
+        }
       }
 
       // Remove "dead" particles.

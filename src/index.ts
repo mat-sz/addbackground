@@ -6,6 +6,7 @@ export interface BackgroundOptions {
   primaryColor?: string;
   secondaryColor?: string;
   backgroundColor?: string;
+  mouseEffectsEnabled?: boolean;
 }
 
 export interface BackgroundControls {
@@ -20,6 +21,7 @@ export function addBackground({
   primaryColor = 'rgba(255, 255, 255, 0.2)',
   secondaryColor = 'rgba(0, 0, 0, 0.2)',
   backgroundColor = 'transparent',
+  mouseEffectsEnabled = true,
 }: BackgroundOptions): BackgroundControls {
   if (!(type in backgrounds)) {
     throw new Error('Unsupported background type.');
@@ -57,8 +59,10 @@ export function addBackground({
     mouseY = undefined;
   };
 
-  canvas.addEventListener('mousemove', handleMouseMove);
-  canvas.addEventListener('mouseleave', handleMouseLeave);
+  if (mouseEffectsEnabled) {
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+  }
 
   const frame = () => {
     if (stopped) {
@@ -99,8 +103,11 @@ export function addBackground({
     stop: () => {
       playing = false;
       stopped = true;
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mouseleave', handleMouseLeave);
+
+      if (mouseEffectsEnabled) {
+        canvas.removeEventListener('mousemove', handleMouseMove);
+        canvas.removeEventListener('mouseleave', handleMouseLeave);
+      }
     },
   };
 }

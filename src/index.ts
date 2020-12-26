@@ -19,7 +19,7 @@ export function addBackground({
   canvas,
   type,
   primaryColor = 'rgba(255, 255, 255, 0.2)',
-  secondaryColor = 'rgba(0, 0, 0, 0.2)',
+  secondaryColor = 'rgba(255, 255, 255, 0.2)',
   backgroundColor = 'transparent',
   mouseEffectsEnabled = true,
 }: BackgroundOptions): BackgroundControls {

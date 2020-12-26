@@ -4,6 +4,7 @@ export const triangles: RenderFunctionFactory = ({
   canvas,
   ctx,
   primaryColor,
+  secondaryColor,
 }: RenderOptions) => {
   const particlesMax = 150;
   const particlesChance = 0.1;
@@ -24,7 +25,7 @@ export const triangles: RenderFunctionFactory = ({
     t++;
     if (t > 360) t = 0;
 
-    ctx.strokeStyle = primaryColor;
+    ctx.strokeStyle = secondaryColor;
     ctx.fillStyle = primaryColor;
 
     if (particles.length < particlesMax && Math.random() < particlesChance) {
